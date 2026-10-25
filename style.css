@@ -58,9 +58,7 @@ img{max-width:100%;display:block}
 .tate{writing-mode:vertical-rl;font-size:clamp(30px,3.6vw,44px);font-weight:600;letter-spacing:.32em;line-height:1.7;margin:0}
 .tate-sub{writing-mode:vertical-rl;font-size:14px;color:var(--sub);letter-spacing:.3em;line-height:2.2;margin:0;padding-top:120px}
 .hero-photo{aspect-ratio:4/5;background:var(--wash);position:relative;overflow:hidden}
-.hero-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,transparent 55%,rgba(207,106,63,.10))}
-.ph-note{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-size:12px;color:var(--sub);letter-spacing:.2em}
-.ph-mark{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);font-size:13px;color:#b9b1a7;letter-spacing:.4em;writing-mode:vertical-rl}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 @media(max-width:820px){
   .hero .in{grid-template-columns:1fr;gap:40px;padding:48px 16px 56px}
   .hero-copy{gap:24px}
@@ -95,24 +93,38 @@ img{max-width:100%;display:block}
 /* 著書 */
 .book{display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:center;max-width:860px;margin:0 auto}
 @media(max-width:820px){.book{grid-template-columns:1fr;gap:28px;justify-items:center;text-align:left}}
-.cover{width:220px;aspect-ratio:1/1.45;background:var(--kaki);position:relative;box-shadow:0 1px 0 rgba(0,0,0,.05)}
-.cover .t{position:absolute;top:26px;right:28px;writing-mode:vertical-rl;color:#fff;font-size:24px;font-weight:600;letter-spacing:.3em;line-height:1.5}
-.cover .a{position:absolute;top:28px;left:24px;writing-mode:vertical-rl;color:#fff;font-size:11px;letter-spacing:.4em}
-.cover .n{position:absolute;bottom:10px;left:0;right:0;text-align:center;color:rgba(255,255,255,.75);font-size:10px;letter-spacing:.15em}
+.cover{display:block;width:220px;border:1px solid var(--line)}
+.cover img{width:100%;height:auto}
+.buy{display:flex;flex-wrap:wrap;gap:10px 12px;margin-top:24px}
+.buy a{font-size:13px;text-decoration:none;border:1px solid var(--ink);padding:8px 20px;letter-spacing:.12em;transition:.2s}
+.buy a:first-child{background:var(--ink);color:#fff}
+.buy a:hover{background:var(--kaki-deep);border-color:var(--kaki-deep);color:#fff}
 .book h3{font-size:22px;font-weight:600;margin:0 0 4px;letter-spacing:.12em}
 .book .pub{font-size:13px;color:var(--sub);margin-bottom:16px}
 .book p{margin:0 0 8px}
 
 /* 掲載・寄稿 */
-.media{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 36px;font-size:15px;max-width:820px;margin:0 auto}
-.media span{white-space:nowrap}
+.media{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:820px;margin:0 auto}
+@media(max-width:820px){.media{grid-template-columns:1fr;gap:32px}}
+.media h3{font-size:13px;font-weight:400;letter-spacing:.3em;color:var(--kaki);margin:0 0 4px}
+.media ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.media li{border-bottom:1px solid var(--line);padding:12px 0;font-size:15px}
+.media a{text-decoration:none;display:flex;justify-content:space-between}
+.media a::after{content:"↗";color:var(--sub);font-size:12px}
+.media a:hover{color:var(--kaki-deep)}
 
 /* 動画 */
 .video{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 @media(max-width:820px){.video{grid-template-columns:1fr;gap:28px}}
-.video-frame{aspect-ratio:16/9;background:var(--ink);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;letter-spacing:.2em}
-.video-frame b{display:block;width:56px;height:56px;border:1px solid #fff;border-radius:50%;margin:0 auto 12px;position:relative}
-.video-frame b::after{content:"";position:absolute;left:22px;top:17px;border-left:16px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent}
+.video-frame{aspect-ratio:16/9;background:var(--ink)}
+.video-frame iframe{width:100%;height:100%;border:0;display:block}
+.yt-more{max-width:820px;margin:56px auto 0}
+.yt-more h3{font-size:13px;font-weight:400;letter-spacing:.3em;color:var(--kaki);margin:0 0 4px}
+.yt-more ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.yt-more li{border-bottom:1px solid var(--line);padding:12px 0;font-size:15px}
+.yt-more a{text-decoration:none;display:flex;justify-content:space-between;gap:16px}
+.yt-more a::after{content:"▶";color:var(--sub);font-size:10px;padding-top:6px}
+.yt-more a:hover{color:var(--kaki-deep)}
 
 /* 下層ページの見出し */
 .page-head{border-bottom:1px solid var(--line);padding:72px 0 56px;text-align:center}
@@ -144,7 +156,7 @@ img{max-width:100%;display:block}
 .body p.quote{font-size:20px;font-weight:600;text-align:center;line-height:1.9;padding:36px 8px;margin:40px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .body p.quote strong{color:var(--ink)}
 .author{margin-top:72px;border-top:1px solid var(--ink);padding-top:28px;display:grid;grid-template-columns:96px 1fr;gap:24px}
-.author .ph{width:96px;height:96px;border-radius:50%;background:var(--wash);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--sub);letter-spacing:.1em;text-align:center}
+.author .ph{width:96px;height:96px;border-radius:50%;object-fit:cover}
 .author .label{font-size:11px;letter-spacing:.3em;color:var(--sub)}
 .author h3{margin:2px 0 8px;font-size:18px;font-weight:600;letter-spacing:.12em}
 .author p{margin:0;font-size:14px;line-height:2}
@@ -161,6 +173,11 @@ img{max-width:100%;display:block}
 .timeline{margin:36px 0 0;border-top:1px solid var(--line)}
 .timeline div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
 .timeline dt,.timeline .y{color:var(--sub);font-size:14px}
+@media(max-width:600px){.timeline div{grid-template-columns:64px 1fr}}
+.prof-links{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:28px;font-size:14px;letter-spacing:.12em}
+.prof-links a{text-decoration:none;border-bottom:1px solid var(--kaki)}
+.prof-links span,.sns span{color:#b9b1a7}
+.prof-links small,.sns small{font-size:10px;margin-left:4px}
 
 /* 講演ページ */
 .lead-text{max-width:700px;margin:0 auto 56px;text-align:center}
@@ -183,5 +200,7 @@ img{max-width:100%;display:block}
 .site-footer .brand{justify-content:center;margin-bottom:20px}
 .fnav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 28px;font-size:13px;margin-bottom:20px}
 .fnav a{text-decoration:none}
-.sns{display:flex;justify-content:center;gap:24px;font-size:12px;letter-spacing:.15em;color:var(--sub);margin-bottom:28px}
+.sns{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 24px;font-size:12px;letter-spacing:.15em;color:var(--sub);margin-bottom:28px}
+.sns a{text-decoration:none;color:var(--ink)}
+.sns a:hover{color:var(--kaki-deep)}
 .copy{font-size:11px;color:var(--sub);letter-spacing:.15em}
